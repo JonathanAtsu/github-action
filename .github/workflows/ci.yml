@@ -22,16 +22,17 @@ jobs:
 
   setup_job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
       - name: create file
         run: touch github-action.txt
       - name: print helloworld
         run: echo "helloworld"
       - name: display readme file
         run: cat README.md
-
+      - name: checkout repo
+        uses: actions/checkout@v3
+        
   deploy_job:
     runs-on: macos-latest
     steps:
