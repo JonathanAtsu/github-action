@@ -8,8 +8,8 @@ on:
     branches:
       - main
       - dev
-  schedule:
-    - cron: '*/1 * * * *'
+#   schedule:
+    # - cron: '*/1 * * * *'
 
 jobs:
   build_job:
