@@ -40,7 +40,12 @@ jobs:
 
       - name: Display README file (Linux)
         run: cat README.md
-
+      - name:  upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-action-artifact
+          path: github-action.txt
+      
 
   deploy_job:
     needs: 
@@ -50,6 +55,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-action-artifact
+          path: github-action.txt
 
       - name: Print Hello World
         run: echo "helloworld"
