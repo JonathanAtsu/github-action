@@ -18,11 +18,13 @@ jobs:
       - name: print helloworld
         run: echo "helloworld"
       - name: display readme file
-        run: type README.md
+        run: read README.md
 
   setup_job:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
       - name: create file
         run: touch github-action.txt
       - name: print helloworld
