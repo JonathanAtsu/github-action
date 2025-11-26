@@ -3,41 +3,51 @@ name: utc pipeline
 on:
   push:
     branches:
-     - main
+      - main
   pull_request:
     branches:
       - main
       - dev
-#   schedule:
-    # - cron: '*/1 * * * *'
 
 jobs:
+
   build_job:
     runs-on: windows-latest
     steps:
-      - name: print helloworld
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print Hello World
         run: echo "helloworld"
-      - name: display readme file
-        run: read README.md
+
+      - name: Display README file (Windows)
+        run: type README.md
+
 
   setup_job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: create file
-        run: touch github-action.txt
-      - name: print helloworld
-        run: echo "helloworld"
-      - name: display readme file
-        run: cat README.md
-      - name: checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
-        
+
+      - name: Create file
+        run: touch github-action.txt
+
+      - name: Print Hello World
+        run: echo "helloworld"
+
+      - name: Display README file (Linux)
+        run: cat README.md
+
+
   deploy_job:
     runs-on: macos-latest
     steps:
-      - name: print helloworld
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print Hello World
         run: echo "helloworld"
-      - name: display readme file
+
+      - name: Display README file (macOS)
         run: cat README.md
-                
